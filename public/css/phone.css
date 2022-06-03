@@ -1,0 +1,22 @@
+.container{
+    width: 100%;
+    font-size: 12px;
+}
+.songItem:hover{
+    text-shadow: 1px 0px 2px red;
+    font-size: 13px;
+    /* display: flex; */
+    /* margin: 12px 0; */
+    /* justify-content: space-between;
+    align-items: center;
+    border-radius: 34px; */
+    box-shadow: 2px 2px 14px red;
+    cursor: pointer;
+}
+.songItemPlay:hover{
+    /* width: 40px; */
+    /* border-radius: 50%; */
+    box-shadow: 1px 1px 8px blue;
+    /* margin: 0 15px; */
+    cursor: pointer;
+}
