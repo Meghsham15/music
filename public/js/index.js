@@ -1,10 +1,7 @@
-
 $('h1').css('color', 'red');
-
 console.log('Eureka');
 let songIndex = 0;
 let audioElement = new Audio('/songs/1.mp3');
-// console.log(audioElement.currentTime);
 let masterPlay = $('#masterPlay');
 let myProgressBar = $('#myProgessBar');
 let gif = $('#gif');
@@ -13,26 +10,19 @@ let timeDur = $(".txt");
 console.log(masterSongName.text());
 let songItemPlay = $('.songItemPlay');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
-// myProgressBar.val("0");
-
-
 timeDur.text("");
 // Play pause Function ---
 function plPa(x) {
     if (x.attr('src') == "/img/play.svg") {
         x.attr('src', '/img/pause.svg');
-        // att.src.add('pause.svg');
     }
     else {
         x.attr('src', '/img/play.svg');
     }
 }
-
 masterPlay.click(function () {
-    // console.log("clicked");
     plPa(masterPlay);
 })
-
 let songs = [
     { songName: "Ahimsa(Error 404 Remix)", filePath: "/songs/1.mp3", cover: "/covers/1.jpg" },
     { songName: "Salty Water", filePath: "/songs/2.mp3", cover: "/covers/2.jpg" },
@@ -45,13 +35,9 @@ let songs = [
     { songName: "South Mania 2(Error 404)", filePath: "/songs/9.mp3", cover: "/covers/9.jpg" },
     { songName: "Make You Mine(PUBLIC)", filePath: "/songs/10.mp3", cover: "/covers/10.jpg" },
 ]
-// console.log(songs.length);
-// masterSongName.text(songs[0].songName);
 songItems.forEach((element, i) => {
-    // console.log(songs[i].cover);
     document.getElementsByClassName('imge')[i].src = songs[i].cover;
     document.getElementsByClassName('songName')[i].innerText = songs[i].songName;
-    // console.log(element,i);
 });
 let prg = "";
 let auD = ""
@@ -68,26 +54,16 @@ audioElement.addEventListener('timeupdate', () => {
 
 myProgressBar.change(function () {
     audioElement.currentTime = myProgressBar.val() * audioElement.duration / 100;
-    // console.log(myProgressBar.attr("value"));
-    // console.log(myProgressBar.val());
 })
 masterPlay.click(function () {
     audioElement.currentTime = prg * audioElement.duration / 100;
 })
-
 songItemPlay.click(function () {
-    // console.log($(this).attr('id'));
-
     $('.songItemPlay').attr('src', '/img/play.svg');
     let b = $(this).attr('id');
-    // console.log(b);
     let a = '#' + $(this).attr('id');
-    // console.log(a);
     let z = $(a)
-    // console.log(a);
     plPa(z);
-
-
     if (z.attr('src') == '/img/play.svg') {
         masterPlay.attr('src', '/img/play.svg');
     }
@@ -100,13 +76,7 @@ songItemPlay.click(function () {
     if (masterPlay.attr('src') == '/img/pause.svg') {
         z.attr('src', '/img/pause.svg');
     }
-    // console.log(z.parent().parent().parent().attr('class'));
-    // let i = '.'+z.parent().parent().parent().attr('class');
-    // console.log($(i+'>songName').$(this).text());
-    // plPa(z);
-    // console.log(songs[b - 1].songName);
     masterSongName.text(songs[b - 1].songName);
-    // console.log(masterSongName.text());
     $(".songItem").removeClass("csStyle")
     for (i = 0; i < songs.length; i++) {
         if (songs[i].songName == masterSongName.text()) {
@@ -115,37 +85,21 @@ songItemPlay.click(function () {
             let cls = $(h).attr("class");
             let lol = $("." + cls).parents(".songItem");
             let sI = "#" + $(lol).attr("class") + p;
-            // console.log(sI);
             $(sI).addClass("csStyle");
-            // $(sI).css(csStyle)
-            
-
             let play = '/songs/' + p + '.mp3'
             if (z.attr('src') == '/img/play.svg') {
-                // $(sI).css(style);
-                // $(sI).remove.css(csStyle);
-                // console.log(play);
                 audioElement.src = play;
-                audioElement.pause();
-                // $(h).attr('src', "/img/play.svg");
-                
+                audioElement.pause();                
             }
             if (z.attr('src') == '/img/pause.svg') {
-                // console.log(play);
                 audioElement.src = play;
                 audioElement.play();
-                // $(h).attr('src', "/img/pause.svg");
-                // myProgressBar.val(prg);
-                // myProgressBar.val(prg);
             }
 
         }
     }
 
 })
-// console.log(songs[0].songName);
-
-// Master Play button Linked to the mini play button of song list 
 masterPlay.click(function () {
     for (i = 0; i < songs.length; i++) {
         if (songs[i].songName == masterSongName.text()) {
@@ -179,13 +133,9 @@ masterPlay.click(function () {
         }
     }
 })
-
 $("#next").click(function () {
     songItemPlay.attr("src","/img/play.svg"); 
-    $(".songItem").removeClass("csStyle")
-    
-    // console.log(masterSongName.text());
-
+    $(".songItem").removeClass("csStyle");
     for(i=0;i<songs.length;i++)
     {
         if(masterSongName.text() == songs[i].songName)
@@ -224,8 +174,6 @@ $("#next").click(function () {
             
         }
     }
-    
-
 })
 $("#previous").click(function () {
     songItemPlay.attr("src","/img/play.svg");
