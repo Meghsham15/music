@@ -13,10 +13,36 @@
     box-shadow: 2px 2px 14px red;
     cursor: pointer;
 }
-.songItemPlay:hover{
-    /* width: 40px; */
-    /* border-radius: 50%; */
+
+.songInfo {
+    position: absolute;
+    top: 23px;
+    left: 10vw;
+    font-family: 'Varela Round', sans-serif;
+}
+.icons {
+    margin-top: 20px;
+    display: flex;
+}
+.csStyle {
+    text-shadow: 2px 1px 3px red;
+    font-size: 15px;
+    height: 55px;
+    width: 85%;
+    background: cadetblue;
+    display: flex;
+    color: white;
+    font-weight: bold;
+    margin: 12px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 34px;
+    box-shadow: 2px 2px 14px red;
+}
+.songItemPlay:hover {
+    width: 30px;
+    border-radius: 50%;
     box-shadow: 1px 1px 8px blue;
-    /* margin: 0 15px; */
+    margin: 0 15px;
     cursor: pointer;
 }
