@@ -4,7 +4,7 @@
     padding: 0;
 }
 body{
-    background: url('/img/bg.jpg');
+    background: url('/img/bg.jpg') no-repeat center center/cover;
 }
 /* Navbar ---  */
 
@@ -43,8 +43,8 @@ nav ul li{
     border-radius: 50%;
 }
 /* Main ---  */
-.container{
-    min-height: 72vh;
+.container {
+    min-height: 100vh;
     /* background-color: black; */
     color: white;
     font-family: 'Varela Round', sans-serif;
@@ -53,21 +53,28 @@ nav ul li{
     margin: 23px auto;
     border-radius: 12px;
     padding: 23px;
-    /* background-image: url('bg.jpg'); */
+    /* background-image: url(bg.jpg); */
     /* object-fit: cover; */
     flex-direction: column;
 }
-.songItemContainer{
-    margin-top: 74px;
+.songItemContainer {
+    margin-top: 32px;
+    margin-left: -93px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* left: -49px; */
+    position: relative;
+    left: -180px;
 }
 
-.songItem{
+.songItem {
     height: 50px;
-    width: 80%;
+    width: 65%;
     background: white;
     display: flex;
     color: black;
-    margin: 12px 0;
+    margin: 6px 0;
     justify-content: space-between;
     align-items: center;
     border-radius: 34px;
@@ -84,11 +91,11 @@ nav ul li{
     box-shadow: 2px 2px 14px red;
     cursor: pointer;
 }
-.csStyle{
+.csStyle {
     text-shadow: 2px 1px 3px red;
     font-size: 23px;
-    height: 70px;
-    width: 85%;
+    height: 60px;
+    width: 70%;
     background: cadetblue;
     display: flex;
     color: white;
@@ -98,7 +105,6 @@ nav ul li{
     align-items: center;
     border-radius: 34px;
     box-shadow: 2px 2px 14px red;
-
 }
 .imge{
     width: 45px;
