@@ -51,8 +51,12 @@ audioElement.addEventListener('timeupdate', () => {
         $("#next").click();
     }
 })
-
-
+$(".songItem").click(function(){
+    im = $(this).find(".songItemPlay")[0]
+    yup = "#"+$(im).attr("id")
+    // console.log(yup);
+    $(yup).click();
+})
 myProgressBar.change(function () {
     audioElement.currentTime = myProgressBar.val() * audioElement.duration / 100;
 })
@@ -226,9 +230,3 @@ for(i=0;i<songs.length;i++)
         $("#songItem"+(i+1)).addClass("csStyle");
     }
 }
-$(".songItem").click(function(){
-    im = $(this).find(".songItemPlay")[0]
-    yup = "#"+$(im).attr("id")
-    // console.log(yup);
-    $(yup).click();
-})
