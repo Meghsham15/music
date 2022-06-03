@@ -51,12 +51,6 @@ audioElement.addEventListener('timeupdate', () => {
         $("#next").click();
     }
 })
-$(".songItem").click(function(){
-    im = $(this).find(".songItemPlay")[0]
-    yup = "#"+$(im).attr("id")
-    // console.log(yup);
-    $(yup).click();
-})
 myProgressBar.change(function () {
     audioElement.currentTime = myProgressBar.val() * audioElement.duration / 100;
 })
