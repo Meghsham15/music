@@ -69,6 +69,7 @@ songItemPlay.click(function () {
     }
     if (z.attr('src') == '/img/pause.svg') {
         masterPlay.attr('src', '/img/pause.svg');
+        gif.css("opacity","1");
     }
     if (masterPlay.attr('src') == '/img/play.svg') {
         z.attr('src', '/img/play.svg');
@@ -224,4 +225,3 @@ for(i=0;i<songs.length;i++)
         $("#songItem"+(i+1)).addClass("csStyle");
     }
 }
-
