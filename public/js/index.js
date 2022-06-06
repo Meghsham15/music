@@ -42,12 +42,11 @@ songItems.forEach((element, i) => {
 let prg = "";
 let auD = ""
 audioElement.addEventListener('timeupdate', () => {
-    auD = audioElement.duration;
-    let progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
+    auD = Math.floor(audioElement.duration);
+    let progress = Math.floor(parseInt((audioElement.currentTime / audioElement.duration) * 100));
     myProgressBar.val(progress);
     prg = myProgressBar.val();
-    if(myProgressBar.val() == "100")
-    {
+    if (myProgressBar.val() == "100") {
         $("#next").click();
     }
 })
@@ -63,19 +62,6 @@ songItemPlay.click(function () {
     let a = '#' + $(this).attr('id');
     let z = $(a)
     plPa(z);
-    if (z.attr('src') == '/img/play.svg') {
-        masterPlay.attr('src', '/img/play.svg');
-    }
-    if (z.attr('src') == '/img/pause.svg') {
-        masterPlay.attr('src', '/img/pause.svg');
-        gif.css("opacity","1");
-    }
-    if (masterPlay.attr('src') == '/img/play.svg') {
-        z.attr('src', '/img/play.svg');
-    }
-    if (masterPlay.attr('src') == '/img/pause.svg') {
-        z.attr('src', '/img/pause.svg');
-    }
     masterSongName.text(songs[b - 1].songName);
     $(".songItem").removeClass("csStyle")
     for (i = 0; i < songs.length; i++) {
@@ -89,10 +75,13 @@ songItemPlay.click(function () {
             let play = '/songs/' + p + '.mp3'
             if (z.attr('src') == '/img/play.svg') {
                 audioElement.src = play;
-                audioElement.pause();                
+                masterPlay.attr('src', '/img/play.svg');
+                audioElement.pause();
             }
-            if (z.attr('src') == '/img/pause.svg') {
+            else{
                 audioElement.src = play;
+                masterPlay.attr('src', '/img/pause.svg');
+                gif.css("opacity", "1");
                 audioElement.play();
             }
 
@@ -108,23 +97,17 @@ masterPlay.click(function () {
             songIndex = p;
             let play = '/songs/' + p + '.mp3'
             if (masterPlay.attr('src') == '/img/play.svg') {
-
-                // console.log(play);
                 audioElement.src = play;
-                audioElement.currentTime = prg * auD / 100;
+                myProgressBar.val(prg);
+                audioElement.currentTime = (prg * auD / 100)+1;
                 audioElement.pause();
                 $(h).attr('src', "/img/play.svg");
                 gif.css('opacity', '0');
-                // console.log(prg);
-                myProgressBar.val(prg);
-                // console.log(prg*auD/100);
             }
-            if (masterPlay.attr('src') == '/img/pause.svg') {
-                // console.log(prg*auD/100);
-                // console.log(play);
+            else if (masterPlay.attr('src') == '/img/pause.svg') {
                 audioElement.src = play;
                 myProgressBar.val(prg);
-                audioElement.currentTime = prg * auD / 100;
+                audioElement.currentTime = (prg * auD / 100)+1;
                 audioElement.play();
                 $(h).attr('src', "/img/pause.svg");
                 gif.css('opacity', '1');
@@ -134,27 +117,23 @@ masterPlay.click(function () {
     }
 })
 $("#next").click(function () {
-    songItemPlay.attr("src","/img/play.svg"); 
+    songItemPlay.attr("src", "/img/play.svg");
     $(".songItem").removeClass("csStyle");
-    for(i=0;i<songs.length;i++)
-    {
-        if(masterSongName.text() == songs[i].songName)
-        {
-            
-            if(i>=9){
+    for (i = 0; i < songs.length; i++) {
+        if (masterSongName.text() == songs[i].songName) {
+
+            if (i >= 9) {
                 i = 0
             }
-            else{
+            else {
                 i += 1;
             }
-            $("#"+(i+1)).attr('src','/img/pause.svg');
-            if($("#"+(i+1)).attr("src") == '/img/pause.svg')
-            {
-                masterPlay.attr("src",'/img/pause.svg');
+            $("#" + (i + 1)).attr('src', '/img/pause.svg');
+            if ($("#" + (i + 1)).attr("src") == '/img/pause.svg') {
+                masterPlay.attr("src", '/img/pause.svg');
             }
-            else
-            {
-                masterPlay.attr("src",'/img/play.svg');
+            else {
+                masterPlay.attr("src", '/img/play.svg');
             }
             masterSongName.text(songs[i].songName)
             let p = i + 1;
@@ -165,38 +144,33 @@ $("#next").click(function () {
             // console.log(sI);
             $(sI).addClass("csStyle");
             let play = '/songs/' + p + '.mp3'
-            if($(h).attr("src") == '/img/pause.svg')
-            {
+            if ($(h).attr("src") == '/img/pause.svg') {
                 audioElement.src = play;
                 audioElement.play();
             }
-            
-            
+
+
         }
     }
 })
 $("#previous").click(function () {
-    songItemPlay.attr("src","/img/play.svg");
+    songItemPlay.attr("src", "/img/play.svg");
     $(".songItem").removeClass("csStyle");
-    for(i=0;i<songs.length;i++)
-    {
-        if(masterSongName.text() == songs[i].songName)
-        {
-            
-            if(i<=0){
+    for (i = 0; i < songs.length; i++) {
+        if (masterSongName.text() == songs[i].songName) {
+
+            if (i <= 0) {
                 i = 0;
             }
-            else{
+            else {
                 i -= 1;
             }
-            $("#"+(i+1)).attr('src','/img/pause.svg');
-            if($("#"+(i+1)).attr("src") == '/img/pause.svg')
-            {
-                masterPlay.attr("src",'/img/pause.svg');
+            $("#" + (i + 1)).attr('src', '/img/pause.svg');
+            if ($("#" + (i + 1)).attr("src") == '/img/pause.svg') {
+                masterPlay.attr("src", '/img/pause.svg');
             }
-            else
-            {
-                masterPlay.attr("src",'/img/play.svg');
+            else {
+                masterPlay.attr("src", '/img/play.svg');
             }
             masterSongName.text(songs[i].songName)
             let p = i + 1;
@@ -207,20 +181,17 @@ $("#previous").click(function () {
             // console.log(sI);
             $(sI).addClass("csStyle");
             let play = '/songs/' + p + '.mp3'
-            if($(h).attr("src") == '/img/pause.svg')
-            {
+            if ($(h).attr("src") == '/img/pause.svg') {
                 audioElement.src = play;
                 audioElement.play();
             }
-            
-            
+
+
         }
     }
 })
-for(i=0;i<songs.length;i++)
-{
-    if(masterSongName.text()==songs[i].songName)
-    {
-        $("#songItem"+(i+1)).addClass("csStyle");
+for (i = 0; i < songs.length; i++) {
+    if (masterSongName.text() == songs[i].songName) {
+        $("#songItem" + (i + 1)).addClass("csStyle");
     }
 }
